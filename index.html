@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Darts Kit - Powered by AutoDarts</title>
+    <style>
+        /* --- CSS Styles --- */
+        :root {
+            --neon-green: #39FF14;
+            --dark-bg: #1a1a1a; /* Slightly lighter than pure black for depth */
+            --darker-bg: #121212;
+            --light-text: #ffffff;
+            --section-padding: 4rem 2rem;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--darker-bg);
+            color: var(--light-text);
+            margin: 0;
+            line-height: 1.6;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        h1 { font-size: 2.5rem; line-height: 1.2; }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.5rem; color: var(--neon-green); }
+
+        a { text-decoration: none; color: inherit; }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1rem; /* Add padding for smaller screens */
+        }
+
+        .neon-text { color: var(--neon-green); }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--neon-green);
+            color: var(--darker-bg);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 8px rgba(57, 255, 20, 0.2);
+        }
+
+        .btn:hover {
+            background-color: #32cb10;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(57, 255, 20, 0.4);
+        }
+
+        /* --- Header / Hero Section --- */
+        #hero {
+            background-color: var(--dark-bg);
+            padding: var(--section-padding);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 70vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content { 
+            flex: 1; 
+            padding-right: 2rem; 
+            z-index: 3;
+            position: relative;
+        }
+        .hero-image { 
+            flex: 1;
+            z-index: 2;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(57, 255, 20, 0.3); /* Neon green glow */
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* --- Hook Section --- */
+        #hook {
+            background-color: var(--darker-bg);
+            padding: var(--section-padding);
+            text-align: center;
+        }
+        #hook h2 { font-size: 2.5rem; }
+
+        /* --- Features Section --- */
+        #features {
+            background-color: var(--dark-bg);
+            padding: var(--section-padding);
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .feature-card {
+            background-color: var(--darker-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #333;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .feature-card:hover { 
+            border-color: var(--neon-green); 
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--neon-green);
+            margin-bottom: 1rem;
+        }
+
+        /* --- What's Included Section --- */
+        #whats-included {
+            background: linear-gradient(rgba(18, 18, 18, 0.95), rgba(18, 18, 18, 0.95)), url('images/PXL_20260116_152311929.jpg') no-repeat center center/cover;
+            padding: var(--section-padding);
+            text-align: center;
+        }
+        .included-text { max-width: 800px; margin: 0 auto; }
+        .checklist {
+            list-style-type: none;
+            padding: 0;
+            display: inline-block; /* To center the list items */
+            text-align: left;
+        }
+        .checklist li {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.1rem;
+        }
+        .checklist li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--neon-green);
+            font-weight: bold;
+        }
+        .disclaimer {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: #aaa;
+            font-style: italic;
+        }
+
+        /* --- Testimonials Section --- */
+        #testimonials {
+            background-color: var(--dark-bg);
+            padding: var(--section-padding);
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .testimonial-card {
+            background-color: var(--darker-bg);
+            padding: 2.5rem 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--neon-green);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            position: relative;
+        }
+        .testimonial-card::before {
+            content: '“';
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            font-size: 5rem;
+            color: var(--neon-green);
+            opacity: 0.1;
+        }
+        .testimonial-card cite {
+            display: block;
+            margin-top: 1.5rem;
+            font-style: normal;
+            font-weight: 600;
+            color: #ccc;
+        }
+        .testimonial-card cite span {
+            color: var(--neon-green);
+            font-weight: 700;
+        }
+
+        /* --- Footer / Contact Section --- */
+        #contact {
+            background-color: var(--darker-bg);
+            padding: var(--section-padding);
+            text-align: center;
+            border-top: 3px solid var(--neon-green);
+        }
+        .price {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--neon-green);
+            margin: 1rem 0;
+        }
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            font-size: 1.2rem;
+            flex-wrap: wrap;
+        }
+        .contact-card {
+            background-color: var(--dark-bg);
+            padding: 1.5rem 2rem;
+            border-radius: 8px;
+            border: 1px solid #333;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-green);
+        }
+        .contact-card a {
+            color: var(--light-text);
+        }
+        .contact-card strong {
+            color: var(--neon-green);
+        }
+        .powered-by {
+            margin-top: 3rem;
+            font-size: 0.8rem;
+            color: #777;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+            #hero { flex-direction: column; text-align: center; }
+            .hero-content { padding-right: 0; margin-top: 3rem; }
+            .hero-image { animation: none; transform: none; }
+            .contact-info { flex-direction: column; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Turn Your Dartboard Into a <span class="neon-text">Smartboard</span>.</h1>
+                <h3>Professional Grade Automatic Scoring System.</h3>
+                <p>Upgrade your existing steel-tip board with broadcast-quality automatic scoring, powered by AutoDarts. No more chalkboard math, just pure gameplay.</p>
+                <button id="orderBtn" class="btn">Order Your Kit - $350</button>
+            </div>
+            <div class="hero-image">
+                <img src="images/PXL_20260116_013922171.jpg" alt="AutoDarts Smartboard Setup with Monitor">
+            </div>
+        </div>
+    </header>
+
+    <section id="hook">
+        <div class="container">
+            <h2>Stop Entering Scores.<br><span class="neon-text">Start Throwing Darts.</span></h2>
+        </div>
+    </section>
+
+    <section id="features">
+        <div class="container">
+            <h2 style="text-align: center;">Experience the Power of Computer Vision</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Broadcast Accuracy</h3>
+                    <p>Three high-speed cameras track every throw with pinpoint precision. Get the same automatic scoring experience as the pros on TV.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Use Your Own Board</h3>
+                    <p>Works with any standard bristle dartboard. There's no need to buy an expensive, proprietary electronic board.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔌</div>
+                    <h3>Plug & Play System</h3>
+                    <p>The included mini-PC comes pre-configured with AutoDarts OS. Just mount the light ring, plug it into your monitor or TV, and you're ready to play.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials">
+        <div class="container">
+            <h2 style="text-align: center;">Don't Just Take Our Word For It</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>"The best darting investment I've ever made. Installation was a breeze and it feels like playing in a professional tournament every single night."</p>
+                    <cite>- <span>Mark T</span>, League Player</cite>
+                </div>
+                <div class="testimonial-card">
+                    <p>"My friends are blown away every time they come over. The automatic scoring is flawless and lets us focus on the game. Absolutely worth it."</p>
+                    <cite>- <span>Sarah P</span>, Home User</cite>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="whats-included">
+        <div class="container">
+                <div class="included-text">
+                    <h2>The <span class="neon-text">$350</span> Complete Kit.</h2>
+                    <p>We build and configure the tech so you don't have to. Here is exactly what is included in your professional setup:</p>
+                    <ul class="checklist">
+                        <li><strong>360° LED Light Ring:</strong> Shadowless illumination for perfect camera vision.</li>
+                        <li><strong>3x High-Speed Cameras:</strong> Pre-installed in custom 3D-printed mounts.</li>
+                        <li><strong>Pre-Configured Mini-PC:</strong> Dedicated unit that boots directly into AutoDarts.</li>
+                        <li><strong>Power Supplies & Cables:</strong> All necessary cabling for a clean setup.</li>
+                    </ul>
+                    <p class="disclaimer">Note: Does not include dartboard, wall surround, or monitor/TV.</p>
+                </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <h2>Ready to Upgrade Your Game?</h2>
+            <div class="price">$350 Complete System</div>
+            <p style="color: var(--neon-green);">Optional Professional Installation: +$50</p>
+
+            <div class="contact-info">
+                <div class="contact-card">
+                    <p>📞 <strong><a href="tel:484-469-0299">484-469-0299</a></strong></p>
+                </div>
+                <div class="contact-card">
+                    <p>📧 <strong><a href="mailto:dburns@hotmail.com">dburns@hotmail.com</a></strong></p>
+                </div>
+            </div>
+
+            <a href="mailto:dburns@hotmail.com?subject=AutoDarts%20Kit%20Inquiry" class="btn">Contact to Order</a>
+
+            <p class="powered-by">Powered by AutoDarts.io. This is an independently built hardware kit and is not directly affiliated with the AutoDarts software developers.</p>
+        </div>
+    </footer>
+
+    <script>
+        /* --- JavaScript Functionality --- */
+        document.addEventListener('DOMContentLoaded', function() {
+            const orderBtn = document.getElementById('orderBtn');
+            const contactSection = document.getElementById('contact');
+
+            // Add a smooth scroll effect when the main CTA button is clicked
+            orderBtn.addEventListener('click', function() {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
