@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 1640px;
+    height: 856px;
+    overflow: hidden;
+    background: #0d0d0d;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  }
+
+  .stage {
+    position: relative;
+    width: 1640px;
+    height: 856px;
+    background:
+      radial-gradient(1200px 700px at 70% 50%, #131c12 0%, #0d0d0d 70%),
+      #0d0d0d;
+    overflow: hidden;
+  }
+
+  /* Lime grid backdrop */
+  .grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(182,240,107,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(182,240,107,0.05) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(1200px 700px at 75% 50%, #000 0%, transparent 70%);
+  }
+
+  /* Diagonal lime accent stripe */
+  .accent {
+    position: absolute;
+    top: 0;
+    left: 720px;
+    width: 100px;
+    height: 856px;
+    background: #b6f06b;
+    clip-path: polygon(80px 0, 100px 0, 30px 856px, 10px 856px);
+    box-shadow: 0 0 80px rgba(182,240,107,0.35);
+    z-index: 2;
+  }
+
+  /* Left text panel */
+  .left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 720px;
+    height: 856px;
+    padding: 110px 60px 0 90px;
+    color: #fff;
+    z-index: 3;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #b6f06b;
+    padding: 10px 18px;
+    border: 1px solid rgba(182,240,107,0.4);
+    border-radius: 999px;
+    background: rgba(182,240,107,0.06);
+  }
+
+  .title {
+    margin-top: 28px;
+    font-size: 116px;
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -3.5px;
+    color: #ffffff;
+  }
+  .title .accent-text { color: #b6f06b; }
+
+  .tag {
+    margin-top: 28px;
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1.35;
+    color: #d6dcd6;
+    max-width: 580px;
+  }
+
+  .features {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+    max-width: 580px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #b6f06b;
+    letter-spacing: 0.5px;
+  }
+  .features span { white-space: nowrap; }
+  .features span::before { content: "● "; color: #b6f06b; }
+
+  .row {
+    margin-top: 44px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+  .pill {
+    padding: 18px 32px;
+    background: #b6f06b;
+    color: #0d0d0d;
+    font-size: 22px;
+    font-weight: 800;
+    border-radius: 999px;
+    letter-spacing: 0.3px;
+  }
+  .url {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #ffffff;
+    text-transform: uppercase;
+  }
+
+  /* Customer photo collage on right */
+  .collage {
+    position: absolute;
+    top: 0;
+    left: 720px;
+    width: 920px;
+    height: 856px;
+    z-index: 1;
+    clip-path: polygon(180px 0, 920px 0, 920px 856px, 60px 856px);
+  }
+
+  .photo {
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    border: 6px solid #ffffff;
+    border-radius: 6px;
+    box-shadow:
+      0 0 0 2px rgba(182,240,107,0.6),
+      0 18px 40px rgba(0,0,0,0.55);
+  }
+
+  /* 4 installs arranged with slight rotations */
+  .p1 {
+    top: 60px;
+    left: 240px;
+    width: 280px;
+    height: 380px;
+    background-image: url('images/install-blade.jpg');
+    transform: rotate(-6deg);
+  }
+  .p2 {
+    top: 90px;
+    left: 540px;
+    width: 320px;
+    height: 240px;
+    background-image: url('images/install-basement.jpg');
+    background-position: center 40%;
+    transform: rotate(4deg);
+  }
+  .p3 {
+    top: 470px;
+    left: 200px;
+    width: 300px;
+    height: 320px;
+    background-image: url('images/install-arcade.jpg');
+    transform: rotate(5deg);
+  }
+  .p4 {
+    top: 380px;
+    left: 540px;
+    width: 320px;
+    height: 410px;
+    background-image: url('images/install-viper.jpg');
+    transform: rotate(-4deg);
+  }
+
+  /* Caption bar bottom-right of collage */
+  .caption {
+    position: absolute;
+    bottom: 30px;
+    right: 60px;
+    padding: 10px 18px;
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(182,240,107,0.4);
+    border-radius: 999px;
+    color: #b6f06b;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    z-index: 4;
+  }
+
+  .vignette {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 50%);
+    pointer-events: none;
+    z-index: 2;
+  }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="grid"></div>
+
+    <div class="collage">
+      <div class="photo p1"></div>
+      <div class="photo p2"></div>
+      <div class="photo p3"></div>
+      <div class="photo p4"></div>
+    </div>
+
+    <div class="accent"></div>
+    <div class="vignette"></div>
+
+    <div class="left">
+      <span class="eyebrow">Computer-vision auto-scoring</span>
+      <div class="title">Darts<span class="accent-text">Vision</span></div>
+      <div class="tag">Pro auto-scoring kit for any bristle dartboard. Real installs from real customers.</div>
+      <div class="features">
+        <span>3 calibrated cameras</span>
+        <span>Pixel-accurate</span>
+        <span>Plug-and-play</span>
+        <span>Shipped from PA</span>
+      </div>
+      <div class="row">
+        <div class="pill">Kits from $400</div>
+        <div class="url">dartsvision.com</div>
+      </div>
+    </div>
+
+    <div class="caption">Real customer installs</div>
+  </div>
+</body>
+</html>
