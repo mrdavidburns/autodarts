@@ -436,6 +436,16 @@ function Contact() {
               <div className="contact-card-value">484 · 469 · 0299</div>
               <div className="contact-card-arrow">→</div>
             </a>
+            <a
+              href="https://www.facebook.com/groups/1962594431341774"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-card"
+            >
+              <div className="contact-card-label">COMMUNITY</div>
+              <div className="contact-card-value">Facebook group</div>
+              <div className="contact-card-arrow">→</div>
+            </a>
             <div className="contact-card contact-card--static">
               <div className="contact-card-label">SHIPS FROM</div>
               <div className="contact-card-value">Pennsylvania, USA</div>
@@ -462,6 +472,20 @@ function Footer() {
             <a href="#kits">Kits</a>
             <a href="#specs">Specs</a>
             <a href="#contact">Contact</a>
+          </div>
+          <div className="footer-social">
+            <a
+              href="https://www.facebook.com/groups/1962594431341774"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-social-link"
+              aria-label="Join the DartsVision Facebook group"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z" />
+              </svg>
+              <span>Facebook group</span>
+            </a>
           </div>
         </div>
         <div className="footer-fine">
