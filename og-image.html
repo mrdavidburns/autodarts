@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; background: #0d0d0d; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }
+
+  .stage {
+    position: relative;
+    width: 1200px;
+    height: 630px;
+    background: #0d0d0d;
+    overflow: hidden;
+  }
+
+  /* Right photo panel — diagonal cut on left edge */
+  .photo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 620px;
+    height: 630px;
+    background-image: url('images/install-blade.jpg');
+    background-size: auto 100%;
+    background-position: right center;
+    background-repeat: no-repeat;
+    clip-path: polygon(140px 0, 620px 0, 620px 630px, 60px 630px);
+  }
+
+  /* Yellow diagonal accent strip */
+  .accent {
+    position: absolute;
+    top: 0;
+    right: 580px;
+    width: 90px;
+    height: 630px;
+    background: #f7c948;
+    clip-path: polygon(80px 0, 90px 0, 30px 630px, 20px 630px);
+    box-shadow: 0 0 40px rgba(247,201,72,0.25);
+  }
+
+  .left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 600px;
+    height: 630px;
+    padding: 130px 60px 0 70px;
+    color: #fff;
+  }
+
+  .title {
+    font-size: 54px;
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: -1.2px;
+    color: #ffffff;
+    max-width: 500px;
+  }
+
+  .title .brand {
+    font-weight: 800;
+    color: #ffffff;
+  }
+
+  .btn {
+    display: inline-block;
+    margin-top: 70px;
+    padding: 22px 56px;
+    background: #f7c948;
+    color: #1a1a1a;
+    font-size: 26px;
+    font-weight: 700;
+    border-radius: 999px;
+    box-shadow: 0 0 0 4px rgba(247,201,72,0.18), 0 0 50px rgba(247,201,72,0.35);
+    letter-spacing: 0.2px;
+  }
+
+  /* Subtle vignette over the whole stage to deepen the dark side */
+  .vignette {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 45%);
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="photo"></div>
+    <div class="accent"></div>
+    <div class="vignette"></div>
+    <div class="left">
+      <div class="title"><span class="brand">DartsVision</span> &mdash; Pro auto-scoring kit for any bristle dartboard</div>
+      <div class="btn">Read More</div>
+    </div>
+  </div>
+</body>
+</html>
