@@ -3,6 +3,7 @@
 # Build artifacts
 /dist
 /build
+/js
 
 # Dependency directories
 /node_modules

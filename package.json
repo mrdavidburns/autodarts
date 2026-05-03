@@ -1,0 +1,19 @@
+{
+  "name": "dartsvision-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "DartsVision static site. JSX precompiled to JS via Babel CLI for GitHub Pages.",
+  "scripts": {
+    "build": "babel . --out-dir js --extensions .jsx --only '*.jsx'",
+    "dev": "npm run build && python3 -m http.server 8765",
+    "watch": "babel . --out-dir js --extensions .jsx --only '*.jsx' --watch"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.24.0",
+    "@babel/core": "^7.24.0",
+    "@babel/preset-react": "^7.24.0"
+  },
+  "babel": {
+    "presets": ["@babel/preset-react"]
+  }
+}
