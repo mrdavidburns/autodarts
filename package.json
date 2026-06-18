@@ -9,9 +9,9 @@
     "watch": "babel . --out-dir js --extensions .jsx --only '*.jsx' --watch"
   },
   "devDependencies": {
-    "@babel/cli": "^7.24.0",
-    "@babel/core": "^7.24.0",
-    "@babel/preset-react": "^7.24.0"
+    "@babel/cli": "^8.0.1",
+    "@babel/core": "^8.0.1",
+    "@babel/preset-react": "^8.0.1"
   },
   "babel": {
     "presets": ["@babel/preset-react"]
