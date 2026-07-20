@@ -5,6 +5,7 @@
   "description": "DartsVision static site. JSX precompiled to JS via Babel CLI for GitHub Pages.",
   "scripts": {
     "build": "babel . --out-dir js --extensions .jsx --only '*.jsx'",
+    "ci:build": "npm ci && npm run build",
     "dev": "npm run build && python3 -m http.server 8765",
     "watch": "babel . --out-dir js --extensions .jsx --only '*.jsx' --watch"
   },
