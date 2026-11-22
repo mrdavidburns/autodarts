@@ -34,6 +34,7 @@ function Nav() {
         <a href="#kits">Kits</a>
         <a href="#gallery">Gallery</a>
         <a href="#faq">FAQ</a>
+        <a href="update.html">Software update</a>
       </div>
       <div className="nav-actions">
         <a

@@ -471,6 +471,7 @@ function Footer() {
             <a href="#how">How it works</a>
             <a href="#kits">Kits</a>
             <a href="#specs">Specs</a>
+            <a href="update.html">Software update</a>
             <a href="#contact">Contact</a>
           </div>
           <div className="footer-social">
